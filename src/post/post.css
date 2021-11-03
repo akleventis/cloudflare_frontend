@@ -1,0 +1,38 @@
+.post {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+}
+form input {
+    margin: 5px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.post textarea {
+    margin: 5px;
+    border-radius: 5px;
+    padding: 10px;
+}
+form button {
+    max-width: 100px;
+    min-width: 100px;
+    margin-left: 50%;
+
+}
+
+#delete {
+    max-width: 50px;
+    height: 15px;
+    padding: 4px;
+    margin: 5px;
+}
+.deletef {
+    padding-left: 5px;
+}
