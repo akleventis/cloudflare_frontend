@@ -6,7 +6,7 @@ class FetchPost extends React.Component {
         super(props);
         this.state = {
             data: [],
-            isLoading: true
+            isLoading: true,
         };
     }
 
@@ -15,8 +15,24 @@ class FetchPost extends React.Component {
         const res =  await response.json()
         this.setState({
             data: [...this.state.data, ...res],
-            isLoading: false
+            isLoading: false,
         })
+    }
+
+// this.props.dataToFetch -> all post information
+
+    componentDidUpdate(next_props) {
+        const renderData  = this.props.dataToFetch
+        if (next_props.dataToFetch !== renderData) {
+            if (renderData) {
+                const isEmpty = Object.values(renderData[0]).every(x => x === null || x === '');
+                if (!isEmpty) {
+                    this.setState({data: [...this.state.data, ...renderData]})
+                } else {
+                    alert("Please fill in data")
+                }
+            }
+        }
     }
 
     render() {

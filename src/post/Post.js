@@ -5,8 +5,8 @@ import "./post.css";
 // https://my-worker.alex-leventis1.workers.dev/posts
 
 class Post extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
     
@@ -17,12 +17,17 @@ class Post extends React.Component {
           'username': event.target[1].value,
           'content': event.target[2].value
         }
-        console.log(JSON.stringify(data));
+
         fetch('https://my-worker.alex-leventis1.workers.dev/posts', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json'},
           body: JSON.stringify(data),
-        }).then(alert('Post was sent! Refresh the page in 10-15 seconds for post to show up'));
+        }).then(this.submitFormData(data));
+      }
+
+      submitFormData(data) {
+        // console.log(data)
+        this.props.getData(data);
       }
     
       render() {
